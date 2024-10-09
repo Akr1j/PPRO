@@ -15,6 +15,4 @@ public interface CarService {
     void deleteCar(int id);
 
     void saveCar(Car car);
-
-
 }
