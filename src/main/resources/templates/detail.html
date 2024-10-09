@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Site of all Cards</title>
+</head>
+<body>
+
+<a th:href="@{'/edit/' + ${index}}">Edith</a>
+<a th:href="@{'/delete/' + ${index}}">Delete</a>
+
+<h1>Detail:</h1>
+<h2 th:text="${car.spz}"></h2>
+<h2 th:text="${car.colour}"></h2>
+<h2 th:text="${car.tankVolume}"></h2>
+<h2 th:text="${car.numberOfSeats}"></h2>
+
+
+</body>
+</html>
