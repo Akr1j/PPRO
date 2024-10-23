@@ -9,13 +9,13 @@
 <h1>Cars here:</h1>
 <ul>
     <li th:each="car, iter: ${cars}">
-        <a th:href="@{'/detail/' + ${iter.index}}">
+        <a th:href="@{'/cars/detail/' + ${iter.index}}">
             <span th:text="${car.spz}"></span>
         </a>
     </li>
 </ul>
 
-<a href="/create">Create</a>
+<a href="/cars/create">Create</a>
 
 </body>
 </html>
