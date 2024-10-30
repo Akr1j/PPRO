@@ -3,16 +3,16 @@ package com.example.auta.service;
 import com.example.auta.model.Driver;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public interface DriverService {
 
-    ArrayList<Driver> getAllDrivers();
+    List<Driver> getAllDrivers();
 
-    Driver getDriversById(int id);
+    Driver getDriversById(long id);
 
-    void deleteDriver(int id);
+    void deleteDriver(long id);
 
     void saveDriver(Driver Driver);
 }

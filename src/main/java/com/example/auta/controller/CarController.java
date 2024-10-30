@@ -27,10 +27,10 @@ public class CarController {
         return "car_list";
     }
 
-    @GetMapping("/detail/{index}")
-    public String detail(Model model, @PathVariable int index) {
+    @GetMapping("/detail/{id}")
+    public String detail(Model model, @PathVariable long id) {
 
-        Car car = carService.getCarsById(index);
+        Car car = carService.getCarsById(id);
         if (car != null) {
             model.addAttribute("car", car);
             return "car_detail";
@@ -38,18 +38,17 @@ public class CarController {
         return "redirect:/";
     }
 
-    @GetMapping("/delete/{index}")
-    public String delete(@PathVariable int index) {
-        carService.deleteCar(index);
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable long id) {
+        carService.deleteCar(id);
         return "redirect:/";
     }
 
-    @GetMapping("/edit/{index}")
-    public String edit(Model model, @PathVariable int index) {
+    @GetMapping("/edit/{id}")
+    public String edit(Model model, @PathVariable long id) {
 
-        Car car = carService.getCarsById(index);
+        Car car = carService.getCarsById(id);
         if (car != null) {
-            car.setId(index);
             model.addAttribute("car", car);
             model.addAttribute("edit", true);
             return "car_edit";

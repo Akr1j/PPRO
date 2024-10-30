@@ -27,10 +27,10 @@ public class DriverController {
         return "driver_list";
     }
 
-    @GetMapping("/detail/{index}")
-    public String detail(Model model, @PathVariable int index) {
+    @GetMapping("/detail/{id}")
+    public String detail(Model model, @PathVariable long id) {
 
-        Driver driver = driverService.getDriversById(index);
+        Driver driver = driverService.getDriversById(id);
         if (driver != null) {
             model.addAttribute("driver", driver);
             return "driver_detail";
@@ -38,18 +38,17 @@ public class DriverController {
         return "redirect:/";
     }
 
-    @GetMapping("/delete/{index}")
-    public String delete(@PathVariable int index) {
-        driverService.deleteDriver(index);
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable long id) {
+        driverService.deleteDriver(id);
         return "redirect:/";
     }
 
-    @GetMapping("/edit/{index}")
-    public String edit(Model model, @PathVariable int index) {
+    @GetMapping("/edit/{id}")
+    public String edit(Model model, @PathVariable long id) {
 
-        Driver driver = driverService.getDriversById(index);
+        Driver driver = driverService.getDriversById(id);
         if (driver != null) {
-            driver.setPersonalID(index);
             model.addAttribute("driver", driver);
             model.addAttribute("edit", true);
             return "driver_edit";

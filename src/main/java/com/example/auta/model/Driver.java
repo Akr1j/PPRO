@@ -1,12 +1,21 @@
 package com.example.auta.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+@Entity
+@Table(name = "drivers")
 public class Driver {
-    private int personalID = -1;
+
+    @Id
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    private long personalID;
 
     @NotBlank(message = "Name is mandatory")
     @Size(min = 2, message = "Name should have at least 2 characters")
@@ -19,11 +28,11 @@ public class Driver {
     @Min(value = 0, message = "Salary should not be less than 0")
     private int salary;
 
-    public int getPersonalID() {
+    public long getPersonalID() {
         return personalID;
     }
 
-    public void setPersonalID(int personalID) {
+    public void setPersonalID(long personalID) {
         this.personalID = personalID;
     }
 

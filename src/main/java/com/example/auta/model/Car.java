@@ -1,10 +1,13 @@
 package com.example.auta.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+@Entity
+@Table(name = "cars")
 public class Car {
 
     @Size(min = 7, max = 7)
@@ -21,15 +24,17 @@ public class Car {
     @Max(value = 9)
     private int numberOfSeats;
 
-    public int getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
-
-    private int id = -1;
 
     public Car() {
     }
