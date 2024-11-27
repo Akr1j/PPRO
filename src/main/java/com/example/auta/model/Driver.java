@@ -1,13 +1,12 @@
 package com.example.auta.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 @Entity
 @Table(name = "drivers")
@@ -27,6 +26,17 @@ public class Driver {
 
     @Min(value = 0, message = "Salary should not be less than 0")
     private int salary;
+
+    @OneToMany
+    private List<Car> cars;
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
 
     public long getPersonalID() {
         return personalID;

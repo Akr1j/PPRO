@@ -30,6 +30,12 @@
         <input type="number" th:field="${car.numberOfSeats}">
         <span th:if="${#fields.hasErrors('numberOfSeats')}" th:errors="*{numberOfSeats}">Number of Seats Error</span>
     </section>
+    <section>
+        <h2>Driver</h2>
+        <select th:field="*{driver}">
+            <option th:each="driver : ${drivers}" th:text="${driver.name}" th:value="${driver.personalID}" ></option>
+        </select>
+    </section>
 
     <input type="submit" value="Save">
 </form>

@@ -2,8 +2,10 @@ package com.example.auta.controller;
 
 import com.example.auta.model.Car;
 import com.example.auta.service.CarService;
+import com.example.auta.service.DriverService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,11 +16,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/cars")
 public class CarController {
 
+    private DriverService driverService;
     private CarService carService;
 
     @Autowired
-    public CarController(CarService carService) {
+    public CarController(CarService carService, DriverService driverService) {
         this.carService = carService;
+        this.driverService = driverService;
     }
 
     @GetMapping("/")
@@ -51,6 +55,7 @@ public class CarController {
         if (car != null) {
             model.addAttribute("car", car);
             model.addAttribute("edit", true);
+            model.addAttribute("drivers", driverService.getAllDrivers());
             return "car_edit";
         }
         return "redirect:/";
@@ -60,6 +65,7 @@ public class CarController {
     public String createCar(Model model) {
         model.addAttribute("car", new Car());
         model.addAttribute("edit", false);
+        model.addAttribute("drivers", driverService.getAllDrivers());
         return "car_edit";
     }
 

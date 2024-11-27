@@ -24,6 +24,18 @@ public class Car {
     @Max(value = 9)
     private int numberOfSeats;
 
+    @ManyToOne
+    @JoinColumn(name = "driver_id")
+    private Driver driver;
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
